@@ -1,0 +1,177 @@
+
+
+2017-10-17 16:47:25.871614~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 173, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:03:02.970315~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:03:05.606578~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:03:06.931711~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:07:03.960411~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\bot.py", line 101, in pages
+    "\n".join(str(tb['head'][i])+" "*int((25-len(tb['head'][i]))*1.8)+str(tb['body'][int(c.data)-1][i]) for i in range(len(tb['head']))))
+  File "C:\Python36\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "C:\Python36\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "C:\Python36\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Python36\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-17 17:08:42.288243~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:11:53.668379~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:12:01.326145~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:12:06.719684~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:12:09.255938~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:17:48.654874~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+  File "C:\Python36\bot\login.py", line 33, in req
+    if a[:-1]=="FAIL":
+  File "C:\Python36\lib\site-packages\bs4\element.py", line 1011, in __getitem__
+    return self.attrs[key]
+TypeError: unhashable type: 'slice'
+ 
+
+2017-10-17 17:20:50.954102~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 17:22:56.123618~ Traceback (most recent call last):
+  File "C:\Python36\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python36\bot\decorators.py", line 19, in wrap
+    func(message)
+  File "C:\Python36\bot\bot.py", line 176, in choiceCard
+    mess=bot.send_message(message.chat.id,login.req(card[0][1],card[0][2])[1],reply_markup=keyboard)
+IndexError: list index out of range
+ 
+
+2017-10-17 20:34:57.727790~ Traceback (most recent call last):
+  File "C:\Python35\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python35\bot\bot.py", line 100, in pages
+    "\n".join(str(tb['head'][i])+" "*int((25-len(tb['head'][i]))*1.8)+str(tb['body'][int(c.data)-1][i]) for i in range(len(tb['head']))))
+  File "C:\Python35\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "C:\Python35\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "C:\Python35\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Python35\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-17 22:38:41.188388~ Traceback (most recent call last):
+  File "C:\Python35\bot\decorators.py", line 7, in wrap
+    func(*args,**kargs)
+  File "C:\Python35\bot\bot.py", line 100, in pages
+    "\n".join(str(tb['head'][i])+" "*int((25-len(tb['head'][i]))*1.8)+str(tb['body'][int(c.data)-1][i]) for i in range(len(tb['head']))))
+  File "C:\Python35\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "C:\Python35\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "C:\Python35\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "C:\Python35\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
