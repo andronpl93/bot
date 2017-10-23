@@ -35,6 +35,8 @@ def req(log,pas):
 def writeCard(id,log,pas):
     with open('files/login.txt','a') as f:
         f.write('{0};{1};{2}\n'.format(id,log,pas))
+    with open('files/AllCard.txt','a') as f:
+        f.write('{0};{1};{2}\n'.format(id,log,pas))
         
        
 def logOut(id_,card):
@@ -49,4 +51,12 @@ def logOut(id_,card):
     with open('files/login.txt','w') as f:
         for i in ret:
             f.write(i)
+
+def findLoveCity(id_):
+        rez=[]
+        with open('files/saveAZS.txt','r') as f:
+            for i in f:
+                    if str(id_)==i.split(";")[0]:
+                         rez.append(i.split(";")[1][:-1])
+            return rez
     
