@@ -1,0 +1,31 @@
+с.Богуслав;https://www.google.com.ua/maps/search/АЗС+Параллель/@48.4974449,35.9473976,12.86z
+Павлоград;https://www.google.com.ua/maps/search/АЗС+Параллель/@48.4974449,35.9473976,12.86z
+Бахмут (Артемовск);https://www.google.com.ua/maps/search/АЗС+Параллель+Бахмут/@48.5851661,37.991355,12.61z
+Волноваха;https://www.google.com.ua/maps/place/АЗС/@47.6075021,37.4944859,13.22z/data=!4m8!1m2!2m1!1z0JDQl9ChINCf0LDRgNCw0LvQu9C10LvRjCDQstC-0LvQvdC-0LLQsNGF0LA!3m4!1s0x40e0cac97c03dd75:0x546d4a079c32f43a!8m2!3d47.6057399!4d37.5159719
+Горняк;https://www.google.com.ua/maps/search/АЗС+Параллель+Горняк/@48.0571931,37.3470711,13z
+пгт Заречное (пгт Кировск);https://www.google.com.ua/maps/place/вулиця+Бульварна+Зарічне+Донецька+область/@49.002323,37.9205378,13.39z/data=!4m5!3m4!1s0x41207756cebe32d7:0x9201b32931b9969b!8m2!3d49.0062712!4d37.9401754
+Константиновка;https://www.google.com.ua/maps/search/АЗС+Параллель+Константиновка/@48.5410595,37.5987253,11.61z
+Краматорск;https://www.google.com.ua/maps/search/АЗС+Параллель+Краматорск/@48.7177748,37.5375505,12.75z
+с. Красная поляна;https://www.google.com.ua/maps/place/АЗС+Параллель/@47.5420693,37.0894089,17z
+Покровск (Красноармейск);https://www.google.com.ua/maps/place/Parallel/@48.2934338,37.1315117,618m/
+Лиман (Красный Лиман);https://www.google.com.ua/maps/place/АЗС+Параллель/@48.9788319,37.7944047,14.5z/
+Курахово;https://www.google.com.ua/maps/search/АЗС+Параллель+курахово/@47.9931739,37.2503955,13.33z
+Мариуполь;https://www.google.com.ua/maps/search/АЗС+Параллель+Мариуполь/@47.1242345,37.518884,12z/data=!3m1!4b1
+пгт. Новотроицкое;https://www.google.com.ua/maps/place/АЗС+Параллель/@47.7113754,37.5753293,13.67z/
+п. Ольгинка;https://www.google.com.ua/maps/@47.701496,37.4887555,17.88z
+с. Райгородок;https://www.google.com.ua/maps/place/АЗС+Параллель/@48.9001132,37.7175121,14.5z/data=!4m12!1m6!3m5!1s0x40df85e6d66a805b:0x7b9032541adb06a4!2z0JDQl9ChINCf0LDRgNCw0LvQu9C10LvRjA!8m2!3d48.9016278!4d37.7273886!3m4!1s0x40df85e6d66a805b:0x7b9032541adb06a4!8m2!3d48.9016278!4d37.7273886
+Святогорск;https://www.google.com.ua/maps/place/АЗС+Параллель/@49.032939,37.5433634,546m/
+Селидово;https://www.google.com.ua/maps/place/АЗС+Параллель/@48.1505012,37.2706449,13.94z
+Сергеевка;https://www.google.com.ua/maps/@48.681417,37.3794235,16.71z
+Славянск;https://www.google.com.ua/maps/search/параллель+славянск/@48.8613665,37.5804004,13z/data=!3m1!4b1
+с. Старомлиновка;https://www.google.com.ua/maps/place/АЗС+Параллель/@47.6889627,36.8156257,15.39z/
+пгт. Черкасское;https://www.google.com.ua/maps/place/АЗС+Донбасснефтепродукт/@48.8355984,37.3769336,14.74z/
+Васильевка;https://www.google.com.ua/maps/place/Параллель/@47.4343326,35.300762,17z/
+Запорожье;https://www.google.com.ua/maps/search/Азс+Параллель/@47.8180396,35.0143037,25907m/data=!3m1!1e3
+Мелитополь;https://www.google.com.ua/maps/search/Азс+Параллель+мелитополь/@46.8722484,35.3169574,11044m/data=!3m1!1e3
+Токмак;https://www.google.ru/maps/place/Гефест/@47.2496954,35.6532781,12.56z/data=!4m5!3m4!1s0x40dd6b0c3971b5fb:0x5040012294d8af60!8m2!3d47.2527176!4d35.6958005
+Лисичанск;https://www.google.com.ua/maps/search/Лисичанск+азс+параллель/@48.9079732,38.3999751,13z/data=!3m1!4b1
+пгт Новоайдар;https://www.google.ru/maps/search/новоайдар+азс++параллель/@48.9717306,38.9458771,12.28z
+пгт Новопсков;https://www.google.ru/maps/place/Параллель/@49.5246666,39.085427,13.39z/data=!4m5!3m4!1s0x4121bf57095da88b:0xdedd780d773a5448!8m2!3d49.5176638!4d39.1041503
+с. Передельское;https://www.google.com.ua/maps/place/АЗС+Parallel/@48.7431354,39.2266157,16z
+Северодонецк;https://www.google.com.ua/maps/search/Северодонецк+азс+параллель/@48.9561955,38.3415533,11z/data=!3m1!4b1
