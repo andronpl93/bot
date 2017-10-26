@@ -123,3 +123,37 @@ telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. 
 TypeError: object of type 'NoneType' has no len()
  
 
+2017-10-24 13:52:42.079174~ Traceback (most recent call last):
+  File "D:\Phyton\bot\build\exe.win32-3.6\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "bot.py", line 182, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-24 13:52:42.607174~ Traceback (most recent call last):
+  File "D:\Phyton\bot\build\exe.win32-3.6\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "bot.py", line 182, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
