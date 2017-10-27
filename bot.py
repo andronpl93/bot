@@ -68,12 +68,11 @@ def selectLang2(message):
         with open('files/lang.txt','r') as f:
                 for i in f:
                         i=i.split(';')
-
-                        if i[0]!=str(message.from_user.id):
+                        if i[0]!=str(message.from_user.id) and len(i)>1:
                                 ret.append(i)
         with open('files/lang.txt','w') as f:
                 for i in ret:
-                        f.write("{0};{1}\n".format(i[0],i[1]))
+                        f.write("{0};{1}".format(i[0],i[1]))
                 f.write("{0};{1}\n".format(message.from_user.id,bot.lang))    
         bot.send_message(message.chat.id,config.text['textLengEdit'][bot.lang])
         start(message)
@@ -420,7 +419,7 @@ def action(message):
         if len(action.rez[message.text][2])>5:
                 bot.send_photo(message.chat.id,action.rez[message.text][2])
         keyboard=types.InlineKeyboardMarkup()
-        keyboard.add(*[types.InlineKeyboardButton(text=config.text['textMoreInfo'][bot.lang],url=action.rez[message.text][1])]) 
+        keyboard.add(*[types.InlineKeyboardButton(text=config.text['textMoreInfo'][bot.lang],url=action.rez[message.text][1][:18]+str(bot.lang=='ua' and '/uk' or '')+action.rez[message.text][1][18:])]) 
         mes=bot.send_message(message.chat.id,'<b>{0}</b>\n\n {1}'.format(message.text,str(action.rez[message.text][0])),parse_mode='HTML',reply_markup=keyboard)
         botan.track(config.botan_key, message.chat.id, message, message.text)
         bot.register_next_step_handler(action.mess,action)
@@ -455,7 +454,7 @@ def addAction33(message):
 @Buttons(bot)
 def addAction3(message):
                 addAction4.uaDescription= message.text
-                mess=bot.send_message(message.chat.id,"""Введите ссылку на акцию, на сайте parallel.ua""")
+                mess=bot.send_message(message.chat.id,"Введите ссылку на <b>русскую</b> версию акции, на сайте parallel.ua",parse_mode='HTML')
                 bot.register_next_step_handler(mess,addAction4)
 @fatallError
 @Buttons(bot)

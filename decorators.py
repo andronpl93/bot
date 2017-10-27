@@ -33,7 +33,7 @@ def ButtLang(bot,language):
                 func(message)
             except AttributeError:
                 if str(message.from_user.id) not in  language:
-                    language[message.from_user.id]='ua'
+                    language[str(message.from_user.id)]='ua'
                 bot.lang=language[str(message.from_user.id)]
                 wrap(message)
         return wrap

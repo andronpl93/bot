@@ -9757,3 +9757,680 @@ TypeError: object of type 'NoneType' has no len()
 NameError: name 'lang' is not defined
  
 
+2017-10-26 11:37:53.686918~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\decorators.py", line 22, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 76, in selectLang2
+    f.write("{0};{1}\n".format(i[0],i[1]))
+IndexError: list index out of range
+ 
+
+2017-10-26 11:38:51.693718~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\decorators.py", line 22, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 76, in selectLang2
+    f.write("{0};{1}\n".format(i[0],i[1]))
+IndexError: list index out of range
+ 
+
+2017-10-26 11:46:10.424586~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 50, in selectLang
+    keyboard.add(config.text['home'][bot.lang])
+AttributeError: 'TeleBot' object has no attribute 'lang'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 37, in wrap
+    bot.lang=language[str(message.from_user.id)]
+KeyError: '392230071'
+ 
+
+2017-10-26 11:46:12.706815~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 86, in price
+    obl=config.obl(bot.lang)
+AttributeError: 'TeleBot' object has no attribute 'lang'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 37, in wrap
+    bot.lang=language[str(message.from_user.id)]
+KeyError: '392230071'
+ 
+
+2017-10-26 11:46:13.874931~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\decorators.py", line 19, in wrap
+    if message.text in [config.text['home'][bot.lang],'/start']:
+AttributeError: 'TeleBot' object has no attribute 'lang'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 37, in wrap
+    bot.lang=language[str(message.from_user.id)]
+KeyError: '392230071'
+ 
+
+2017-10-26 11:48:03.587902~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 50, in selectLang
+    keyboard.add(config.text['home'][bot.lang])
+AttributeError: 'TeleBot' object has no attribute 'lang'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 38, in wrap
+    bot.lang=language[str(message.from_user.id)]
+KeyError: '392230071'
+ 
+
+2017-10-26 11:48:26.937236~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 50, in selectLang
+    keyboard.add(config.text['home'][bot.lang])
+AttributeError: 'TeleBot' object has no attribute 'lang'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 39, in wrap
+    bot.lang=language[str(message.from_user.id)]
+KeyError: '392230071'
+ 
+
+2017-10-26 11:49:30.538596~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\decorators.py", line 33, in wrap
+    func(message)
+  File "D:\Phyton\bot\decorators.py", line 22, in wrap
+    func(message)
+  File "D:\Phyton\bot\bot.py", line 76, in selectLang2
+    f.write("{0};{1}\n".format(i[0],i[1]))
+IndexError: list index out of range
+ 
+
+2017-10-26 11:56:41.171655~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-26 11:56:43.771915~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 01:02:53.038051~ Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Phyton\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "D:\Phyton\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "D:\Phyton\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Phyton\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Phyton\lib\site-packages\urllib3\contrib\pyopenssl.py", line 294, in recv_into
+    raise timeout('The read operation timed out')
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Phyton\lib\site-packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Phyton\lib\site-packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 389, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 309, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+ 
+
+2017-10-27 01:04:37.310477~ Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Phyton\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "D:\Phyton\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "D:\Phyton\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Phyton\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Phyton\lib\site-packages\urllib3\contrib\pyopenssl.py", line 294, in recv_into
+    raise timeout('The read operation timed out')
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Phyton\lib\site-packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Phyton\lib\site-packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 389, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 309, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+ 
+
+2017-10-27 01:05:12.557002~ Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Phyton\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "D:\Phyton\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "D:\Phyton\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Phyton\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Phyton\lib\site-packages\urllib3\contrib\pyopenssl.py", line 294, in recv_into
+    raise timeout('The read operation timed out')
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Phyton\lib\site-packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Phyton\lib\site-packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 389, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 309, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+ 
+
+2017-10-27 10:06:20.572291~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 11:30:41.387322~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 11:30:45.917775~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 12:01:41.139278~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 12:02:05.716736~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 12:02:06.775842~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 12:02:07.657930~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 16:16:37.423087~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 16:16:38.261171~ Traceback (most recent call last):
+  File "D:\Phyton\bot\decorators.py", line 8, in wrap
+    func(*args,**kargs)
+  File "D:\Phyton\bot\bot.py", line 231, in pages
+    for i in range(len(tb['head']))),parse_mode='HTML')
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 784, in edit_message_text
+    disable_web_page_preview, reply_markup)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 548, in edit_message_text
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 56, in _make_request
+    return _check_result(method_name, result)['result']
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 75, in _check_result
+    raise ApiException(msg, method_name, result)
+telebot.apihelper.ApiException: A request to the Telegram API was unsuccessful. The server returned HTTP 400 Bad Request. Response body:
+[b'{"ok":false,"error_code":400,"description":"Bad Request: message is not modified"}']
+ 
+
+2017-10-27 16:25:45.463886~ Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 387, in _make_request
+    six.raise_from(e, None)
+  File "<string>", line 2, in raise_from
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 383, in _make_request
+    httplib_response = conn.getresponse()
+  File "D:\Phyton\lib\http\client.py", line 1331, in getresponse
+    response.begin()
+  File "D:\Phyton\lib\http\client.py", line 297, in begin
+    version, status, reason = self._read_status()
+  File "D:\Phyton\lib\http\client.py", line 258, in _read_status
+    line = str(self.fp.readline(_MAXLINE + 1), "iso-8859-1")
+  File "D:\Phyton\lib\socket.py", line 586, in readinto
+    return self._sock.recv_into(b)
+  File "D:\Phyton\lib\site-packages\urllib3\contrib\pyopenssl.py", line 294, in recv_into
+    raise timeout('The read operation timed out')
+socket.timeout: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 440, in send
+    timeout=timeout
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 639, in urlopen
+    _stacktrace=sys.exc_info()[2])
+  File "D:\Phyton\lib\site-packages\urllib3\util\retry.py", line 357, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "D:\Phyton\lib\site-packages\urllib3\packages\six.py", line 686, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 601, in urlopen
+    chunked=chunked)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 389, in _make_request
+    self._raise_timeout(err=e, url=url, timeout_value=read_timeout)
+  File "D:\Phyton\lib\site-packages\urllib3\connectionpool.py", line 309, in _raise_timeout
+    raise ReadTimeoutError(self, url, "Read timed out. (read timeout=%s)" % timeout_value)
+urllib3.exceptions.ReadTimeoutError: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "D:\Phyton\bot\bot.py", line 547, in gogo
+    bot.polling(none_stop=True)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 264, in polling
+    self.__threaded_polling(none_stop, interval, timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 287, in __threaded_polling
+    polling_thread.raise_exceptions()
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 77, in raise_exceptions
+    six.reraise(self.exc_info[0], self.exc_info[1], self.exc_info[2])
+  File "D:\Phyton\lib\site-packages\six.py", line 693, in reraise
+    raise value
+  File "D:\Phyton\lib\site-packages\telebot\util.py", line 58, in run
+    task(*args, **kwargs)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 159, in __retrieve_updates
+    updates = self.get_updates(offset=(self.last_update_id + 1), timeout=timeout)
+  File "D:\Phyton\lib\site-packages\telebot\__init__.py", line 129, in get_updates
+    json_updates = apihelper.get_updates(self.token, offset, limit, timeout, allowed_updates)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 175, in get_updates
+    return _make_request(token, method_url, params=payload)
+  File "D:\Phyton\lib\site-packages\telebot\apihelper.py", line 54, in _make_request
+    timeout=(connect_timeout, read_timeout), proxies=proxy)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 508, in request
+    resp = self.send(prep, **send_kwargs)
+  File "D:\Phyton\lib\site-packages\requests\sessions.py", line 618, in send
+    r = adapter.send(request, **kwargs)
+  File "D:\Phyton\lib\site-packages\requests\adapters.py", line 521, in send
+    raise ReadTimeout(e, request=request)
+requests.exceptions.ReadTimeout: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=30)
+ 
+
