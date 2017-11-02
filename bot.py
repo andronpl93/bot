@@ -12,6 +12,8 @@ import time
 import datetime
 import traceback
 import pyodbc
+import re
+from PIL import Image
 
 
 try:
@@ -137,64 +139,74 @@ def fObl(message):
 @ButtLang(bot,language)
 @Buttons(bot)
 def fCity(message):
-        global pr,tb
-        site=urlopen("http://parallel.ua/"+str(bot.lang=='ua' and 'uk/' or '')+"retail-prices/?city_id="+str(fCity.d[message.text]))
-        site = BeautifulSoup(site,"html.parser")
-        table = site.find('table',{'class':'regions'})
-        tb={
-            'head':[],
-            'body':[],
-            'address':[]}
-        for j,th in enumerate(table.findAll('th')):
-                    tb["head"].append(th.text.replace('*',''))
-        for i,tr in enumerate(table.findAll('tr'),1):      
-            for j,td in enumerate(tr.findAll('td')):
-                if j==0:
-                    if i%2==0:
-                        tb['body'].append([])
-                    if i%2==0:
-                       tb['body'][-1].append(td.text)     
-                else:
-                    if i%2==0:
-                        tb['body'][-1].append(td.text)
-                    else:
-                        tb['address'].append(td.findAll('p')[0].text)
-        if not len(tb['body']):
-                       bot.send_message(message.chat.id,config.text['verySorry'][bot.lang],reply_markup=types.ReplyKeyboardRemove())
-                       start(message)
-                       return  0
-        del tb['head'][1]
-        tb['head'][0]='Бренд   '
-        for i in tb['body']:
-                del i[1]
-        
+        try:
+                global pr,tb
+                try:
+                        site=urlopen("http://parallel.ua/"+str(bot.lang=='ua' and 'uk/' or '')+"retail-prices/?city_id="+str(fCity.d[message.text]))
+                except :
+                        e =sys.exc_info()[1]
+                        if str(e).find("HTTP Error 500")!=-1:
+                                bot.send_message(message.chat.id, config.text['textErrorPrice'][bot.lang])
+                                start(message)
+                                return 0
+                site = BeautifulSoup(site,"html.parser")
+                table = site.find('table',{'class':'regions'})
+                tb={
+                    'head':[],
+                    'body':[],
+                    'address':[]}
+                for j,th in enumerate(table.findAll('th')):
+                            tb["head"].append(th.text.replace('*',''))
+                for i,tr in enumerate(table.findAll('tr'),1):      
+                    for j,td in enumerate(tr.findAll('td')):
+                        if j==0:
+                            if i%2==0:
+                                tb['body'].append([])
+                            if i%2==0:
+                               tb['body'][-1].append(td.text)     
+                        else:
+                            if i%2==0:
+                                tb['body'][-1].append(td.text)
+                            else:
+                                tb['address'].append(td.findAll('p')[0].text)
+                if not len(tb['body']):
+                               bot.send_message(message.chat.id,config.text['verySorry'][bot.lang],reply_markup=types.ReplyKeyboardRemove())
+                               start(message)
+                               return  0
+                del tb['head'][1]
+                tb['head'][0]='Бренд   '
+                for i in tb['body']:
+                        del i[1]
                 
-        
-        keyboard = types.InlineKeyboardMarkup()
-        if len(tb['address'])>1:
-            keyboard.add(*[types.InlineKeyboardButton(text=i,callback_data=str(i)) for i in range(1,len(tb['address'])+1)])
-        a=config.dMaps(message.text)
-        if a is not None:
-               keyboard.add(*[types.InlineKeyboardButton(text=config.text['showMap'][bot.lang],url=a)])
-        azs = bot.send_message(message.chat.id, '\n'.join("<b>{0}</b>. {1}".format(str(i+1),j) for i,j in enumerate(tb['address'])),parse_mode='HTML',reply_markup=keyboard)
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        if message.text not in fCity.lov:
-                save_or_del=config.text['saveLoveCity'][bot.lang]
-        else:
-                save_or_del=config.text['delLoveCity'][bot.lang]
+                        
+                
+                keyboard = types.InlineKeyboardMarkup()
+                if len(tb['address'])>1:
+                    keyboard.add(*[types.InlineKeyboardButton(text=i,callback_data=str(i)) for i in range(1,len(tb['address'])+1)])
+                a=config.dMaps(message.text)
+                if a is not None:
+                       keyboard.add(*[types.InlineKeyboardButton(text=config.text['showMap'][bot.lang],url=a)])
+                azs = bot.send_message(message.chat.id, '\n'.join("<b>{0}</b>. {1}".format(str(i+1),j) for i,j in enumerate(tb['address'])),parse_mode='HTML',reply_markup=keyboard)
+                keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+                if message.text not in fCity.lov:
+                        save_or_del=config.text['saveLoveCity'][bot.lang]
+                else:
+                        save_or_del=config.text['delLoveCity'][bot.lang]
 
-        if len(tb['address'])==1:
-                pr = bot.send_message(chat_id=message.chat.id,
-                text="\n".join(str(tb['head'][i])+" "*int((25-len(tb['head'][i]))*1.8)+'<b>'+str(tb['body'][0][i])+"</b>"+str(i==0 and '\n' or '')
-                                                 for i in range(len(tb['head']))),parse_mode='HTML')
-        else:
-                pr = bot.send_message(message.chat.id,'<b>{0}</b>'.format(config.text['selAZS'][bot.lang]),parse_mode='HTML')
-        pages.pr=pr
-        keyboard.add(*[types.KeyboardButton(name) for name in [config.text['home'][bot.lang],save_or_del]])
-        mess=bot.send_message(message.chat.id, '{0} - +380800503333'.format(config.text['hoteLine'][bot.lang]),reply_markup=keyboard)
-        saveCity.city=message.text
-        bot.register_next_step_handler(mess,saveCity)
-        botan.track(config.botan_key, message.chat.id, message, message.text)
+                if len(tb['address'])==1:
+                        pr = bot.send_message(chat_id=message.chat.id,
+                        text="\n".join(str(tb['head'][i])+" "*int((25-len(tb['head'][i]))*1.8)+'<b>'+str(tb['body'][0][i])+"</b>"+str(i==0 and '\n' or '')
+                                                         for i in range(len(tb['head']))),parse_mode='HTML')
+                else:
+                        pr = bot.send_message(message.chat.id,'<b>{0}</b>'.format(config.text['selAZS'][bot.lang]),parse_mode='HTML')
+                pages.pr=pr
+                keyboard.add(*[types.KeyboardButton(name) for name in [config.text['home'][bot.lang],save_or_del]])
+                mess=bot.send_message(message.chat.id, '{0} - +380800503333'.format(config.text['hoteLine'][bot.lang]),reply_markup=keyboard)
+                saveCity.city=message.text
+                bot.register_next_step_handler(mess,saveCity)
+                botan.track(config.botan_key, message.chat.id, message, message.text)
+        except:
+                raise KeyError
         
 @fatallError
 @ButtLang(bot,language)
@@ -375,9 +387,9 @@ def actions(message):
                 for i in f:
                         i=i.split(';')
                         if bot.lang=='ru':
-                                rez[i[0]]=(str(i[2]).replace('\\n','\n'),str(i[4]),i[5])
+                                rez[i[0]]=(str(i[2]).replace('\\n','\n'),str(i[4]))
                         else:
-                               rez[i[1]]=(str(i[3]).replace('\\n','\n'),str(i[4]),i[5])
+                               rez[i[1]]=(str(i[3]).replace('\\n','\n'),str(i[4]))
         if len(rez)==0:
                 bot.send_message(message.chat.id,config.text['textNotActions'][bot.lang])
                 return 0
@@ -412,15 +424,28 @@ def actions(message):
         bot.register_next_step_handler(mess,action)
         
         
-@fatallError
+
 @ButtLang(bot,language)
 @Buttons(bot)
 def action(message):
-        if len(action.rez[message.text][2])>5:
-                bot.send_photo(message.chat.id,action.rez[message.text][2])
+        imgs=re.findall(r'<g>[\s]*?(http.*?jpg.*?|http.*?png.*?|http.*?gif.*?)</g>',action.rez[message.text][0],re.DOTALL)
+        texts=re.split(r'[\s]*?<g>.*?</g>[\s]*?',action.rez[message.text][0],re.DOTALL)
         keyboard=types.InlineKeyboardMarkup()
         keyboard.add(*[types.InlineKeyboardButton(text=config.text['textMoreInfo'][bot.lang],url=action.rez[message.text][1][:18]+str(bot.lang=='ua' and '/uk' or '')+action.rez[message.text][1][18:])]) 
-        mes=bot.send_message(message.chat.id,'<b>{0}</b>\n\n {1}'.format(message.text,str(action.rez[message.text][0])),parse_mode='HTML',reply_markup=keyboard)
+ 
+        bot.send_message(message.chat.id,'<b>{0}</b>'.format(message.text),parse_mode='HTML')
+        for i in range(len(imgs)):
+                if len(texts[i])!=0:
+                        bot.send_message(message.chat.id,str(texts[i]),parse_mode='HTML')
+                murl=re.search(r'(http.*?jpg|http.*?png|http.*?gif)',imgs[i]).group(0)
+                desc=imgs[i].replace(murl,'')
+                if texts[-1]=="" and i+1==len(imgs):
+                        mess=bot.send_photo(message.chat.id,murl,desc,reply_markup=keyboard)
+                        break
+                else:
+                        bot.send_photo(message.chat.id,murl,desc)
+        else:
+                mes=bot.send_message(message.chat.id,texts[-1],reply_markup=keyboard)
         botan.track(config.botan_key, message.chat.id, message, message.text)
         bot.register_next_step_handler(action.mess,action)
 
@@ -441,7 +466,7 @@ def addAction22(message):
 @fatallError
 @Buttons(bot)
 def addAction2(message):
-                addAction3.uaName=message.text
+                addAction2.uaName=message.text
                 mess=bot.send_message(message.chat.id,"Введите <b>русское</b> описание акции. Описание не обязательно должно быть таким же как и на сайте.Рекомендуем кратко и лаконично описать акцию, а детальную механику можно посмотреть на сайте",parse_mode='HTML')
                 bot.register_next_step_handler(mess,addAction33)
 @fatallError
@@ -453,21 +478,14 @@ def addAction33(message):
 @fatallError
 @Buttons(bot)
 def addAction3(message):
-                addAction4.uaDescription= message.text
+                addAction3.uaDescription= message.text
                 mess=bot.send_message(message.chat.id,"Введите ссылку на <b>русскую</b> версию акции, на сайте parallel.ua",parse_mode='HTML')
-                bot.register_next_step_handler(mess,addAction4)
-@fatallError
-@Buttons(bot)
-def addAction4(message):
-                addAction5.link=message.text
-                mess=bot.send_message(message.chat.id,"""Введите ссылку на картинку, или напишите "нет", если картинка не нужна """)
                 bot.register_next_step_handler(mess,addAction5)
 @fatallError
 @Buttons(bot)
 def addAction5(message):
         with open('files/actions.txt','a',encoding='utf-8') as f:
-                f.write("{0};{1};{2};{3};{4};{5}\n".format(addAction22.ruName,addAction3.uaName,addAction33.ruDescription.replace('\n','\\n').replace(';',' '),addAction4.uaDescription.replace('\n','\\n').replace(';',' '),addAction5.link,message.text))
-
+                f.write("{0};{1};{2};{3};{4}\n".format(addAction22.ruName,addAction2.uaName,addAction33.ruDescription.replace('\n','\\n').replace(';',' '),addAction3.uaDescription.replace('\n','\\n').replace(';',' '),message.text))
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)     
         keyboard.add(config.text['home'][bot.lang])
         bot.send_message(message.chat.id,'Акция успешно добавлена',reply_markup=keyboard)
@@ -482,7 +500,7 @@ def deleteAction(message):
                 with open('files/actions.txt','r',encoding='utf-8') as f:
                         for i in f:
                                 i=i.split(';')
-                                rez[i[0]]=(i[1],i[2],i[3],i[4],i[5])
+                                rez[i[0]]=(i[1],str(i[2]).replace('\\n','\n'),str(i[3]).replace('\\n','\n'),i[4])
                 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)   
                 keyboard.add(*[types.KeyboardButton(name) for name in rez.keys()])
                 keyboard.add(config.text['home'][bot.lang])
@@ -490,15 +508,26 @@ def deleteAction(message):
                 deleteAction2.rez=rez
                 bot.register_next_step_handler(mess,deleteAction2)
 @fatallError
-@Buttons(bot)
 def deleteAction2(message):
                 deleteAction3.mess=message.text
-                keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)   
+                keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
                 keyboard.add(*[types.KeyboardButton(name) for name in ['Удалить',config.text['home'][bot.lang]]])
                 bot.send_message(message.chat.id,"Вы собираетесь удалить акцию {0}".format(message.text))
-                if len(deleteAction2.rez[message.text][2])>5:
-                        bot.send_photo(message.chat.id,deleteAction2.rez[message.text][2])
-                bot.send_message(message.chat.id,'<b>{0}</b>\n\n {1}'.format(message.text,str(deleteAction2.rez[message.text][1])),parse_mode='HTML')
+                imgs=re.findall(r'<g>[\s]*?(http.*?jpg.*?|http.*?png.*?|http.*?gif.*?)</g>',deleteAction2.rez[message.text][1+int(bot.lang=='ua' and 1 or 0)],re.DOTALL)
+                texts=re.split(r'[\s]*?<g>.*?</g>[\s]*?',deleteAction2.rez[message.text][1+int(bot.lang=='ua' and 1 or 0)],re.DOTALL)
+                bot.send_message(message.chat.id,'<b>{0}</b>'.format(message.text),parse_mode='HTML')
+                for i in range(len(imgs)):
+                        if len(texts[i])!=0:
+                                bot.send_message(message.chat.id,str(texts[i]),parse_mode='HTML')
+                        murl=re.search(r'(http.*?jpg|http.*?png|http.*?gif)',imgs[i]).group(0)
+                        desc=imgs[i].replace(murl,'')
+                        if texts[-1]=="" and i+1==len(imgs):
+                                mess=bot.send_photo(message.chat.id,murl,desc)
+                                break
+                        else:
+                                bot.send_photo(message.chat.id,murl,desc)
+                else:
+                        mes=bot.send_message(message.chat.id,texts[-1])
                 mess=bot.send_message(message.chat.id,'<b>Удалить?</b>',parse_mode='HTML',reply_markup=keyboard)
                 bot.register_next_step_handler(mess,deleteAction3)
 @fatallError
@@ -507,7 +536,7 @@ def deleteAction3(message):
         with open('files/actions.txt','w',encoding='utf-8') as f:
                 for i in deleteAction2.rez.keys():
                         if  i!=deleteAction3.mess:
-                            f.write("{0};{1};{2};{3};{4};{5}".format(i,deleteAction2.rez[i][0],deleteAction2.rez[i][1],deleteAction2.rez[i][2],deleteAction2.rez[i][3],deleteAction2.rez[i][4]))
+                            f.write("{0};{1};{2};{3};{4}".format(i,deleteAction2.rez[i][0],deleteAction2.rez[i][1],deleteAction2.rez[i][2],deleteAction2.rez[i][3]))
         message.text='start'
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)     
         keyboard.add(config.text['home'][bot.lang])
@@ -516,12 +545,27 @@ def deleteAction3(message):
                 
                 
                 
-
+a=0
 ###############################################################        
 @bot.message_handler(commands=["db"])
 def db(message):
-        pass
-       # connectString = 'Driver={Oracle in OraHome92};Server=172.24.10.13:1600;DATABASE=KONTORA.BEZNAL.PARALLEL.UA;uid=PARALLEL_USER;pwd=S1mple_U5er'
+        global a
+        f=Image.open('a.png')
+        f.save('a.webp','WEBP')
+        f=open('a.webp','rb')
+        a=bot.send_sticker(message.chat.id,f)
+        f.close()
+        if a!=0:
+                bot.delete_message(message.chat.id,a.message_id)
+                print(1)
+                f=Image.open('b.png')
+                f.save('b.webp','WEBP')
+                f=open('b.webp','rb')
+                bot.send_sticker(message.chat.id,f)
+                f.close()
+        print(0)
+                
+       # connectString1 = 'Driver={Oracle in OraHome92};Server=172.24.10.13:1600;DATABASE=KONTORA.BEZNAL.PARALLEL.UA;uid=PARALLEL_USER;pwd=S1mple_U5er'
         #dsn=  '(DESCRIPTION =(ADDRESS =(PROTOCOL = TCP)(HOST = 172.24.10.13)(PORT = 1600))(CONNECT_DATA = (SERVER = DEDICATED)(service_name = mainpr)))'
         #cnxn = pyodbc.connect(connectString)
        # conn = pyodbc.connect(
