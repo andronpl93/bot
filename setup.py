@@ -16,4 +16,4 @@ setup(  name = "guifoo",
         version = "0.1",
         description = "My GUI application!",
         options = {"build_exe": build_exe_options},
-        executables = [Executable("bot.py", base=base)])
+        executables = [Executable("b/bot2.py", base=base)])
