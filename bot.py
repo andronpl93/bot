@@ -212,9 +212,13 @@ def fCity(message):
                 keyboard.add(*[types.KeyboardButton(name) for name in [config.text['home'][language[str(message.from_user.id)]],save_or_del]])
                 pr['k']=keyboard
                 if len(dataPrice[language[str(message.from_user.id)]][fObl.obl][nameCity])==1:
-                        f=open('price/{0}.webp'.format(a1),'rb')
-                        pr['t']=bot.send_sticker(message.chat.id,f,reply_markup=keyboard)
-                        f.close()
+                        
+                        try:
+                                f=open('price/{0}.webp'.format(a1),'rb')
+                                pr['t']=bot.send_sticker(message.chat.id,f,reply_markup=keyboard)
+                                f.close()
+                        except:
+                                bot.send_message(message.chat.id,config.text['verySorry'][language[str(message.from_user.id)]],reply_markup=keyboard)
                 else:
                         pr['t'] = bot.send_message(message.chat.id,'<b>{0}</b>'.
                                                    format(config.text['selAZS'][language[str(message.from_user.id)]]),parse_mode='HTML',reply_markup=keyboard)
@@ -252,13 +256,18 @@ def pages(c):
         except KeyError:
                 pass
         try:
-                f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
-                       (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ru'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
-        except KeyError:
-                f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
-                       (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ua'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
-        pr['t'] = bot.send_sticker(pr['t'].chat.id,f,reply_markup=pr['k'])
-        f.close()
+                try:
+                        f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
+                               (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ru'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
+                except KeyError:
+                        f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
+                               (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ua'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
+
+                pr['t'] = bot.send_sticker(pr['t'].chat.id,f,reply_markup=pr['k'])
+                f.close()
+        except:
+                pr['t']=bot.send_message(pr['t'].chat.id,config.text['verySorry'][language[str(pr['t'].chat.id)]],reply_markup=pr['k'])
+                
 
 
 
@@ -309,7 +318,7 @@ def balance(message):
                                 bot.send_sticker(message.chat.id,f)
                                 f.close()
                                 bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
-                                mess=bot.send_contact(message.chat.id,'+380800503333',config.text['textContactHotLine'][language[str(message.from_user.id)]],reply_markup=keyboard)
+                                mess=bot.send_message(message.chat.id,config.text['textContactHotLine'][language[str(message.from_user.id)]]+": +380800503333",reply_markup=keyboard)
                         else:
                                 mess=balanceStiker(message,a[1][0],a[1][1],keyboard)
                         nomCard.comands=[config.text['textLogOut'][language[str(message.from_user.id)]],config.text['textAddCard'][language[str(message.from_user.id)]]]
@@ -355,7 +364,7 @@ def nomCard(message):
                                                 bot.send_sticker(message.chat.id,f)
                                                 f.close()
                                                 bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
-                                                bot.send_contact(message.chat.id,'+380800503333',config.text['textContactHotLine'][language[str(message.from_user.id)]])
+                                                bot.send_message(message.chat.id,config.text['textContactHotLine'][language[str(message.from_user.id)]]+": +380800503333")
                                         else:
                                                 balanceStiker(message,a[1][0],a[1][1],keyboard)
                                         
@@ -406,7 +415,7 @@ def choiceCard(message):
                         bot.send_sticker(message.chat.id,f)
                         f.close()
                         bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
-                        mess=bot.send_contact(message.chat.id,'+380800503333',config.text['textContactHotLine'][language[str(message.from_user.id)]],reply_markup=keyboard)
+                        mess=bot.send_message(message.chat.id,config.text['textContactHotLine'][language[str(message.from_user.id)]]+": +380800503333",reply_markup=keyboard)
                         
                 else:
                         mess=balanceStiker(message,a[1][0],a[1][1],keyboard)
