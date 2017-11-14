@@ -28,8 +28,7 @@ def go():
             flag=1
             
             Func(path2+y[0],file)
-            z2=datetime(z.year,z.month,z.day)+timedelta(seconds=115200)
-            sl=(z2-z).seconds
+            sl=3600
         else:
             file.write('Не нашел новый файл\n')
             sl=600

@@ -17,11 +17,14 @@ from PIL import Image, ImageDraw, ImageFont
 import os
 import pickle
 from config import NotComands
+import fdb
 
 
 try:
-	bot = telebot.TeleBot(config.token)
-	language=config.fLang()
+        con = fdb.connect(dsn='DB.FDB', user='SYSDBA', password='masterkey')
+        cur=con.cursor()
+        bot = telebot.TeleBot(config.token)
+        language=config.fLang(cur,con)
 except Exception:
 	pass
 tb={}
@@ -35,9 +38,17 @@ non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
 @fatallError
 def start(message):
     if message.text=='/start':
-            spaming.check(message.from_user.id,message.from_user.first_name,message.from_user.last_name)
+            global con, cur
+            spaming.check(message.from_user.id,message.from_user.first_name,message.from_user.last_name,cur,con)
+            selectLang.f=1
             selectLang(message)
             return 0
+    try:
+            if selectLang.f:
+                    help(message)
+                    return 0
+    except AttributeError:
+            pass
     f=open('files/stikers/logo.webp','rb')
     bot.send_sticker(message.chat.id,f)
     f.close()
@@ -51,6 +62,8 @@ def start(message):
 @bot.message_handler(func=lambda m:m.text[:-1]==config.text['textLangSel']['ru'][:-1] or m.text[:-1]==config.text['textLangSel']['ua'][:-1])
 @LangError
 def selectLang(message):
+        if message.text == config.text['textLangSel']['ru'][:-1] or message.text == config.text['textLangSel']['ua'][:-1]:
+                selectLang.f=0
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(name) for name in [config.text['textselL']['ua'],config.text['textselL']['ru']]])
         try:
@@ -65,25 +78,38 @@ def selectLang2(message):
                 return 0
         ret=[]
 
-        global bot,language
+        global bot,language,cur,con
+        try:
+                language[str(message.from_user.id)]
+                nou=0
+        except KeyError:
+                nou=1
         if message.text==config.text['textselL']['ua']:
                 language[str(message.from_user.id)]='ua'
-                language[message.from_user.id]='ua'
         else:
                         language[str(message.from_user.id)]='ru'
-                        language[message.from_user.id]='ru'
-        with open('files/lang.txt','r') as f:
-                for i in f:
-                        i=i.split(';')
-                        if i[0]!=str(message.from_user.id) and len(i)>1:
-                                ret.append(i)
-        with open('files/lang.txt','w') as f:
-                for i in ret:
-                        f.write("{0};{1}".format(i[0],i[1])) 
-                f.write("{0};{1}\n".format(message.from_user.id,language[str(message.from_user.id)]))    
+        if nou is not None:
+                cur.execute("insert into lang (id_user,l) values ('{0}','{1}')".format(message.from_user.id,language[str(message.from_user.id)]))
+        else:
+              cur.executecute("update lang id_user='{0}',l='{1}' where id_user='{0}'".format(message.from_user.id,language[str(message.from_user.id)]))  
+        con.commit()
+        botan.track(config.botan_key, message.chat.id, message, "Язык - {0}".format(language[str(message.from_user.id)]))
         bot.send_message(message.chat.id,config.text['textLengEdit'][language[str(message.from_user.id)]])
         start(message)
-
+##################################################################
+@bot.message_handler(commands=["help"])
+@fatallError
+def help(message):
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add("Ну ок")
+        bot.send_message(message.chat.id,config.text['textHelp'][language[str(message.from_user.id)]][0],parse_mode='HTML')
+        f=open('files/stikers/help.webp','rb')
+        bot.send_sticker(message.chat.id,f)
+        f.close()
+        mess=bot.send_message(message.chat.id,config.text['textHelp'][language[str(message.from_user.id)]][1],reply_markup=keyboard,parse_mode='HTML')
+        selectLang.f=0
+        bot.register_next_step_handler(mess,lambda x: start(message))
+        
 ############################################################
 @bot.message_handler(func=lambda m:m.text[:4]==config.text['textPrice']['ru'][:-1] or m.text[:4]==config.text['textPrice']['ua'][:-1])
 @fatallError
@@ -99,7 +125,7 @@ def price(message):
                return  0
         fObl.obl=obl
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        a = login.findLoveCity(message.from_user.id,language[str(message.from_user.id)])
+        a = login.findLoveCity(message.from_user.id,language[str(message.from_user.id)],cur)
         if len(a)!=0:
                 cobl=config.text['selectAreaOrCity'][language[str(message.from_user.id)]]
                 keyboard.add(*[types.KeyboardButton(name+u'\U0001F31F') for name in a])
@@ -172,10 +198,9 @@ def fCity(message):
                 if len(dataPrice[language[str(message.from_user.id)]][fObl.obl][nameCity])>1:
                         keyboard.add(*[types.InlineKeyboardButton(text=i,callback_data=str(i))
                                        for i in range(1,len(dataPrice[language[str(message.from_user.id)]][fObl.obl][nameCity])+1)])
-                a=config.dMaps(nameCity)
+                a=config.dMaps(nameCity,language[str(message.from_user.id)])
                 if a is not None:
-                        pass
-                      # keyboard.add(*[types.InlineKeyboardButton(text=config.text['showMap'][language[str(message.from_user.id)]],url=a)])
+                       keyboard.add(*[types.InlineKeyboardButton(text=config.text['showMap'][language[str(message.from_user.id)]],url=a)])
                 azs = bot.send_message(message.chat.id, '\n'.join("<b>{0}</b>. {1}".format(str(i+1),j[0])
                         for i,j in enumerate(dataPrice[language[str(message.from_user.id)]][fObl.obl][nameCity])),parse_mode='HTML',reply_markup=keyboard)
                 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -201,26 +226,17 @@ def fCity(message):
 @bot.message_handler(func=lambda m:m.text==config.text['saveLoveCity']['ru'] or m.text==config.text['saveLoveCity']['ua'] or m.text==config.text['delLoveCity']['ua'] or m.text==config.text['delLoveCity']['ru'])        
 @Buttons(bot,language)
 def saveCity(message):
+        global cur,con
         try:
                 fCity.city
         except AttributeError:
                 return 0
         if message.text==config.text['saveLoveCity'][language[str(message.from_user.id)]]:
-                f = open('files/saveAZS.txt' , 'a')
-                f.write("{0};{1};{2}\n".format(fCity.mes.from_user.id,fCity.city,language[str(message.from_user.id)]))
-                f.close()                
+                cur.execute("insert into savecity (id_user,city,l) values('{0}','{1}','{2}')".format(fCity.mes.from_user.id,fCity.city,language[str(message.from_user.id)]))               
         else:
-            ret=[]
-            with open('files/saveAZS.txt','r') as f:
-                    for i in f:                           
-                            if str(fCity.mes.from_user.id)==i.split(";")[0] and fCity.city==i.split(";")[1] and i.split(";")[2][:-1]==language[str(message.from_user.id)]:
-                                pass
-                            else:
-                                ret.append(i)
-
-            with open('files/saveAZS.txt','w') as f:
-                for i in ret:
-                    f.write(i)
+              cur.execute("delete from savecity where id_user='{0}' and city='{1}' and l='{2}'".format(fCity.mes.from_user.id,fCity.city,language[str(message.from_user.id)]))  
+        con.commit()
+        botan.track(config.botan_key, message.chat.id, message, "Сохранил город - {0}".format(fCity.city))
         start(message)
         
 @bot.callback_query_handler(func=lambda c: c.data)
@@ -231,11 +247,14 @@ def pages(c):
                 int(c.data)
         except ValueError:
                 return
-        bot.delete_message(pr['t'].chat.id,pr['t'].message_id)
+        try:
+                bot.delete_message(pr['t'].chat.id,pr['t'].message_id)
+        except KeyError:
+                pass
         try:
                 f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
                        (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ru'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
-        except:
+        except KeyError:
                 f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
                        (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ua'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
         pr['t'] = bot.send_sticker(pr['t'].chat.id,f,reply_markup=pr['k'])
@@ -273,9 +292,10 @@ def balanceStiker(message,log,bal,k):
 @bot.message_handler(func=lambda m:m.text[:15]==config.text['textBalance']['ru'][:-1] or m.text[:15]==config.text['textBalance']['ua'][:-1])
 @fatallError
 def balance(message):
-        card=login.findCard(message.from_user.id)
+        card=login.findCard(message.from_user.id,cur)
         if len(card)==0:
                 message.text=config.text['textAddCard'][language[str(message.from_user.id)]]
+                nomCard.comands=message.text
                 nomCard(message)  
         else:
                 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -286,10 +306,10 @@ def balance(message):
                         a=login.req(card[0][1],card[0][2],language[str(message.from_user.id)])
                         if a[1][1]=='KB' or a[1][1]=='MB' :
                                 f=open('files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
-                                
                                 bot.send_sticker(message.chat.id,f)
                                 f.close()
-                                mess=bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),reply_markup=keyboard,parse_mode='HTML')
+                                bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
+                                mess=bot.send_contact(message.chat.id,'+380800503333',config.text['textContactHotLine'][language[str(message.from_user.id)]],reply_markup=keyboard)
                         else:
                                 mess=balanceStiker(message,a[1][0],a[1][1],keyboard)
                         nomCard.comands=[config.text['textLogOut'][language[str(message.from_user.id)]],config.text['textAddCard'][language[str(message.from_user.id)]]]
@@ -314,7 +334,7 @@ def balance(message):
 def nomCard(message):
         if message.text not in nomCard.comands:
                 raise NotComands
-        
+        global con
         if message.text!=config.text['textLogOut'][language[str(message.from_user.id)]]:
                 @Buttons(bot,language)
                 def logC(message):
@@ -335,12 +355,13 @@ def nomCard(message):
                                                 bot.send_sticker(message.chat.id,f)
                                                 f.close()
                                                 bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
+                                                bot.send_contact(message.chat.id,'+380800503333',config.text['textContactHotLine'][language[str(message.from_user.id)]])
                                         else:
                                                 balanceStiker(message,a[1][0],a[1][1],keyboard)
                                         
                                 if a[0]:
-                                        if login.findCard(message.from_user.id,log,s=False)!=0:
-                                                login.writeCard(message.from_user.id,log,pas)
+                                        if login.findCard(message.from_user.id,cur,log,s=False)!=0:
+                                                login.writeCard(message.from_user.id,log,pas,cur,con)
                                                 bot.send_message(message.chat.id, config.text['textCardSave'][language[str(message.from_user.id)]],reply_markup=keyboard)
                                         else:
                                                 bot.send_message(message.chat.id, config.text['textCardIn'][language[str(message.from_user.id)]],reply_markup=keyboard) 
@@ -358,7 +379,7 @@ def nomCard(message):
                 mess=bot.send_message(message.chat.id,config.text['textInCard'][language[str(message.from_user.id)]],reply_markup=keyboard)
                 bot.register_next_step_handler(mess,logC)
         else:
-                login.logOut(message.from_user.id,nomCard.loginn)
+                login.logOut(message.from_user.id,nomCard.loginn,cur,con)
                 keyboard = types.ReplyKeyboardRemove()
                 bot.send_message(message.chat.id, config.text['textCardDel'][language[str(message.from_user.id)]],reply_markup=keyboard)
                 start(message)
@@ -374,7 +395,7 @@ def choiceCard(message):
                 nomCard.comands=[config.text['textAddCard'][language[str(message.from_user.id)]]]
                 nomCard(message)
         else:
-                card=login.findCard(message.from_user.id,message.text)
+                card=login.findCard(message.from_user.id,cur,message.text)
                 keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
                 keyboard.add(*[types.KeyboardButton(name) for name in [config.text['textLogOut'][language[str(message.from_user.id)]],config.text['textAddCard'][language[str(message.from_user.id)]],config.text['home'][language[str(message.from_user.id)]]]])
                 messDel=bot.send_message(message.chat.id,config.text['textWait'][language[str(message.from_user.id)]])
@@ -401,12 +422,10 @@ def contacts(message):
         keyboard = types.InlineKeyboardMarkup()
         for i in config.contactsLink:
                 keyboard.add(types.InlineKeyboardButton(text=i[language[str(message.from_user.id)]][0],url=i[language[str(message.from_user.id)]][1]))
-        #bot.send_message(message.chat.id,'Телефон горячей линии (бесплатный с мобильных и стационарных телефонов): +380800503333. \n Центр по работе с корпоративными клиентами: \n 69091, г.Запорожье, бул. Шевченко, 71а\nТелефон: +380937268708 , +380937268642 , +380937268873',reply_markup=keyboard)
-        #bot.send_message(message.chat.id,u'\n\n'.join(i[language[str(message.from_user.id)]] for i in config.contactsText),reply_markup=keyboard)
         for i in config.contactsText[:-1]:
                 bot.send_message(message.chat.id,i[language[str(message.from_user.id)]])
         else:
-                bot.send_message(message.chat.id,i[language[str(message.from_user.id)]],reply_markup=keyboard)
+                bot.send_message(message.chat.id,config.contactsText[-1][language[str(message.from_user.id)]],reply_markup=keyboard)
 
 ##############################spam
 isOdmenSpam=0
@@ -661,7 +680,7 @@ def action(message):
                         bot.send_photo(message.chat.id,murl,desc)
         else:
                 mes=bot.send_message(message.chat.id,texts[-1],reply_markup=keyboard)
-        botan.track(config.botan_key, message.chat.id, message, message.text)
+        botan.track(config.botan_key, message.chat.id, message,"Акции:"+str(message.text))
         bot.register_next_step_handler(action.mess,action)
 
 ##
@@ -765,19 +784,27 @@ a=0
 ###############################################################        
 @bot.message_handler(commands=["db"])
 def db(message):
-        pass
-       # dbq = pyodbc.connect('DSN=Oracl;'+'PWD=S1mple_U5er')
-       # cursor = dbq.cursor()
-       # cursor.execute("select c.card_lock from card  c where c.graphic_number like '9898980150339067'")
+        global con, cur
+        cur.execute("select * from allpeople;")
+  #      cur.execute("CREATE SEQUENCE login_id_sequence;")
+ #       cur.execute("""CREATE TRIGGER login_AUTOINCREMENT FOR login
+#ACTIVE BEFORE INSERT POSITION 0
+#AS
+#BEGIN
+#  NEW.ID = next value for login_id_sequence;
+#END""")
+        #con.commit()
+        print(cur.fetchall())
        # row = cursor.fetchone()
         #if row:
         #    
         
-      #  f=Image.open('afff.jpg')
+        #f=Image.open('help.png')
         
-       # f.save('ava.webp','WEBP')
+        #f.save('help.webp','WEBP')
        # f=open('ava.webp','rb')
        # x=bot.send_sticker(message.chat.id,f)
+        print(2)
 
 
 ######################

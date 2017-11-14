@@ -8,9 +8,10 @@ def isOdmen(id,file):
     except Exception:
         pass
 
-def check(id,first,l):
-    try:
-        with open('files/people/all.txt','a') as f:
-            f.write('{0};{1};{2}\n'.format(id,first,l))
-    except Exception:
-        pass
+def check(id,f,l,cur,con):
+    cur.execute("select * from allpeople where id_user='{0}'".format(id))
+    a=cur.fetchall()
+    if len(a)==0:
+        cur.execute("insert into allpeople (id_user,f_name,l_name) values('{0}','{1}','{2}');".format(id,f,l))
+        con.commit()
+

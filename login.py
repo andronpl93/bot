@@ -4,22 +4,23 @@ import time
 import pyodbc
 dbq = pyodbc.connect('DSN=Oracl;'+'PWD=S1mple_U5er')
 cursor = dbq.cursor()
-def findCard(id_,card=0,s=True):
+def findCard(id_,cur,card=0,s=True):
     ret=[]
-    with open('files/login.txt','r') as f:
-            for i in f:
+    cur.execute("select * from login where id_user='{0}'".format(id_))
+    f=cur.fetchall()
+    for i in f:
                 if card==0:
 
-                        if str(id_)==i.split(";")[0] :
-                            ret.append([i.split(";")[0],i.split(";")[1],i.split(";")[2][:-1]])
+                        if str(id_)==i[1] :
+                            ret.append([i[1],i[2],i[3]])
                 else:
                     if s:
-                         if str(id_)==i.split(";")[0] and str(card)==i.split(";")[1] :
-                            ret.append([i.split(";")[0],i.split(";")[1],i.split(";")[2][:-1]])
+                         if str(id_)==i[1] and str(card)==i[2] :
+                            ret.append([i[1],i[2],i[3]])
                     else:
-                        if str(id_)==i.split(";")[0] and str(card)==i.split(";")[1]:
+                        if str(id_)==i[1] and str(card)==i[2]:
                             return 0
-            return ret
+    return ret
         
  
 def req(log,pas,lang):
@@ -55,33 +56,27 @@ def req(log,pas,lang):
     except :
         return [0,u"Произошла ошибка, просим прощения, попробуйте еще раз."]
 
-def writeCard(id,log,pas):
-    with open('files/login.txt','a') as f:
-        f.write('{0};{1};{2}\n'.format(id,log,pas))
-    with open('files/AllCard.txt','a') as f:
-        f.write('{0};{1};{2}\n'.format(id,log,pas))
+def writeCard(id_,log,pas,cur,con):
+    cur.execute("insert into login (id_user,login,pass) values('{0}','{1}','{2}')".format(id_,log,pas))
+    
+    con.commit()
+    cur.execute("select * from allcard where id_user='{0}' and login='{1}'".format(id_,log))
+    a=cur.fetchall()
+    if len(a)==0:
+        cur.execute("insert into allcard (id_user,login,pass) values('{0}','{1}','{2}')".format(id_,log,pas))
+        
+    con.commit()
         
        
-def logOut(id_,card):
-    ret=[]
-    with open('files/login.txt','r') as f:
-            for i in f:
-                    if str(id_)==i.split(";")[0] and str(card)==i.split(";")[1]:
-                         pass
-                    else:
-                        ret.append(i)
+def logOut(id_,card,cur,con):
+    cur.execute("delete from login where id_user='{0}' and login='{1}'".format(id_,card))
+    con.commit()
 
-    with open('files/login.txt','w') as f:
-        for i in ret:
-            f.write(i)
-
-def findLoveCity(id_,lang):
-        rez=[]
-        with open('files/saveAZS.txt','r') as f:
-            for i in f:
-                    if str(id_)==i.split(";")[0] and lang==i.split(";")[2][:-1]:
-                         rez.append(i.split(";")[1])
-            return rez
+def findLoveCity(id_,lang,cur):
+        cur.execute("select  city from savecity where id_user='{0}' and l='{1}'".format(id_,lang) )
+        x=cur.fetchall()
+        rez=[i[0] for i in x]
+        return rez
     
 def request(card,dStart,dEnd):
     cursor.execute("""select 

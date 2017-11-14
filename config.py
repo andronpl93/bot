@@ -5,8 +5,9 @@ import codecs
 
 lang='ru'
 token= "449516678:AAG-3WuJMd6bmJMY5gSmow7BQZZe1qb3nHw"
-botan_key = "ced7eedf-3482-4f6a-bc62-1cba635cdbd4"
+botan_key = "a9f7a52b-9036-46ad-a648-d38b3be179a3"
 text={
+	'textHelp':{'ru':(u"Несколько советов: \n <b>1.</b> Если вы видите буквенную клавиатуру, то нажмите на эту иконку \U00002B07","<b>2.</b> Не пытайтесь вводить команды вручную, используйте кнопки. \n <b>3.</b> Дожидайтесь ответа от бота(он вам обязательно ответит), только потом вводите новую команду"),'ua':(u"Декілька порад: \n <b>1.</b> Якщо ви бачите літерну клавіатуру, то натисніть цю кнопку \U00002B07","<b>2.</b> Не намагайтесь вводити команди вручну, використовуйте кнопки. \n <b>3.</b> Дочекайтесь відповіді від бота(він вам обов`язково відповість), тільки потім вводьте нову команду")},
 	'textWait':{'ru':'Возможно будет долго... ⌛','ua':'Можливо доведеться почекати... ⌛'},
 	'textErrorPrice':{'ru':'На данный момент информация о ценах недоступна по техническим причинам, попробуйте позже','ua':'На даний час інформація щодо цін недоступна, спробуйте пізніше'},
 	'textselL':{'ru':'Русский','ua':'Українська'},
@@ -64,19 +65,24 @@ contactsLink=[
 
 class NotComands(Exception):
    pass
-def dMaps(city):
+def dMaps(city,l):
 	with codecs.open('files/mapsAZS.txt','r',encoding='utf-8') as f:
-			for i in f:
-				if i.split(';')[0]==city:
-					return i.split(';')[1][:-1]
+			for i,v in enumerate(f):
+				if l=='ua':
+					if i<31:
+						continue
+				else:
+					if i>=31:
+						continue					
+				if v.split(';')[0]==city:
+					return v.split(';')[1][:-1]
 				
-def fLang():
+def fLang(cur,con):
 	di={}
-	with open('files/lang.txt','r') as f:
-		for i in f:
-			i=i.split(';')
-			if len(i)>1:
-				di[i[0]]=i[1][:-1]
+	cur.execute("select * from lang;")
+	rows=cur.fetchall()
+	for row in rows:
+		di[row[1]]=row[2]
 	return di
 			
 			   
