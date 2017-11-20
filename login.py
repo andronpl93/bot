@@ -2,8 +2,7 @@ from urllib.request import urlopen
 from decorators import fatallError
 import time
 import pyodbc
-dbq = pyodbc.connect('DSN=Oracl;'+'PWD=S1mple_U5er')
-cursor = dbq.cursor()
+fpath="C:/BOTTelegram/"
 def findCard(id_,cur,card=0,s=True):
     ret=[]
     cur.execute("select * from login where id_user='{0}'".format(id_))
@@ -25,6 +24,9 @@ def findCard(id_,cur,card=0,s=True):
  
 def req(log,pas,lang):
     a='FAIL0'
+    f = open(fpath+'fattalErrors.txt' , 'a')
+    f.write("нольблять")
+    f.close()
     try:   
         a=urlopen("http://85.17.143.174:8080/parallel_app/parallel.p_mob_app.get_bonus?login={0}&password={1}".format(log,pas)).read().decode("utf-8")
         if a[:-1]=="FAIL":
@@ -42,8 +44,21 @@ def req(log,pas,lang):
                         x='2350'+log+'%'
                 else:
                     x='989898'+log
-
+                f = open(fpath+'fattalErrors.txt' , 'a')
+                f.write("одинсука")
+                f.close()
+                dbq = pyodbc.connect('DSN=Oracl;'+'PWD=S1mple_U5er')
+                f = open(fpath+'fattalErrors.txt' , 'a')
+                f.write("двасука")
+                f.close()                
+                cursor = dbq.cursor()
+                f = open(fpath+'fattalErrors.txt' , 'a')
+                f.write("трисука")
+                f.close()  
                 cursor.execute("select c.card_lock from card  c where c.graphic_number like '{0}'".format(x))
+                f = open(fpath+'fattalErrors.txt' , 'a')
+                f.write("четырейобанарот")
+                f.close()  
                 row = cursor.fetchone()
                 if row is not None:
                     if str(row[0])=='1':

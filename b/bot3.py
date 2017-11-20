@@ -1,14 +1,14 @@
-import xlrd,os
+import xlrd,os,sys
 import imaplib,time
 from datetime import datetime,timedelta
 import pickle
 from PIL import Image,ImageDraw, ImageFont
-
+fpath='C:/BOTTelegram/'
 x=0
 def go():
     global x
     a=[]
-    file=open('../logbot2.txt','a')
+    file=open(fpath+'logbot2.txt','a')
     z=datetime.now()
     file.write('Время: {0}. Проснулся\n'.format(z))
     if 7<=z.hour<=14:
@@ -63,28 +63,28 @@ def Func(f,file):
         data['ru'][x[0]][x[2]].append((x[7],x[17],x[14],x[16],x[10],x[15],x[11]))
         data['ua'][x[1]][x[3]].append((x[8],x[17],x[14],x[16],x[10],x[15],x[11]))
         
-    with open('../files/data.dat', 'wb') as f:
+    with open(fpath+'files/data.dat', 'wb') as f:
         pickle.dump(data,f)
     file.write("Сохранил словарь\n")
         #data_new = pickle.load(f)
-    for dirpath, dirnames, filenames in os.walk('../price/'):
+    for dirpath, dirnames, filenames in os.walk(fpath+'price/'):
             for f in filenames:
                 if f[-5:]=='.webp':
-                    os.remove('../price/'+f)
+                    os.remove(fpath+'price/'+f)
     file.write("Удалил стикеры\n")
 
                     
-    fnt = ImageFont.truetype('../price/7.ttf', 50)
+    fnt = ImageFont.truetype(fpath+'price/7.ttf', 50)
     for i in data['ru']:
         for j in data['ru'][i]:
             for c in range(len(data['ru'][i][j])):
                 a='{0}{1}{2}{3}{4}{5}'.format(*[str(e).replace('.','').replace(' ','-') for e in data['ru'][i][j][c][1:]])
                 file.write(str(data['ru'][i][j][c])+'\n')
-                f=Image.open('../price/bot.png')
+                f=Image.open(fpath+'price/bot.png')
                 d = ImageDraw.Draw(f)
                 for q in range(6):
                     d.text((215,q*65+61),str(data['ru'][i][j][c][q+1]).replace(' ','--.--') , font=fnt, fill=(255,255,255,255))
-                    f.save('../price/{0}.webp'.format(a))
+                    f.save(fpath+'price/{0}.webp'.format(a))
     file.write("Создал новые стикеры \n")
 
 if __name__=='__main__':

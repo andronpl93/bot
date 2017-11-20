@@ -3,7 +3,8 @@ import sys
 import traceback
 import config
 from config import NotComands
-
+fpath='C:/BOTTelegram/'
+#fpath='D:/Phyton/bot/'
 def fatallError(func):
     def wrap(*args,**kargs):
         try:
@@ -11,7 +12,7 @@ def fatallError(func):
         except KeyError:
             langFunc(*args)
         except :
-            f = open('fattalErrors.txt' , 'a')
+            f = open(fpath+'fattalErrors.txt' , 'a')
             f.write("{0}~ {1} \n\n".format(datetime.datetime.now(),traceback.format_exc()))
             f.close()
     return wrap
@@ -28,6 +29,7 @@ def Buttons(bot,language):
         def wrap(message):
             nonlocal bot
             if message.text in [config.text['home'][language[str(message.from_user.id)]],'/start']:
+                bot.start(message)
                 return 0
             try:
                 func(message)

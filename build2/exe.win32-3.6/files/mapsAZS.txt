@@ -1,0 +1,62 @@
+с.Богуслав;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.496594860611054%2C35.96143233891382&z=14
+Павлоград;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.51165221602264%2C35.88563581979747&z=13
+Бахмут (Артемовск);https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.60633369051187%2C37.997121692856695&z=12
+Волноваха;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.59359662930993%2C37.50136456861844&z=12
+Горняк;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.058714502118455%2C37.36319970609895&z=13
+пгт Заречное (пгт Кировск);https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.97517850747107%2C37.700986380598465&z=12
+Константиновка;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.512235879118734%2C37.67250971376234&z=12
+Краматорск;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.74271978747919%2C37.59645947310264&z=12
+с. Красная поляна;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.55726991945438%2C37.06460961195762&z=13
+Покровск (Красноармейск);https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.272677940784%2C37.15054804577608&z=12
+Лиман (Красный Лиман);https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.985225842839235%2C37.81243139996309&z=13
+Курахово;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.98866718433537%2C37.265589416930766&z=13
+Мариуполь;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.119536027689115%2C37.56287956512415&z=12
+пгт. Новотроицкое;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.71231216039229%2C37.57150554931604&z=13
+п. Ольгинка;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.69619700529072%2C37.49666118896437&z=13
+с. Райгородок;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.900198316508174%2C37.72411251342737&z=14
+Святогорск;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=49.04291282140247%2C37.57558253217735&z=14
+Селидово;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.17226356907672%2C37.30937481842011&z=14
+Сергеевка;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.6851067333172%2C37.40588992919879&z=15
+Славянск;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.85694398933697%2C37.5882650464614&z=12
+с. Старомлиновка;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.69849154883926%2C36.832096680982886&z=14
+пгт. Черкасское;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.83415560876634%2C37.37918913398585&z=14
+Васильевка;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.433280403796374%2C35.302495149000606&z=15
+Запорожье;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.81316205736648%2C35.07702301841573&z=11
+Мелитополь;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=46.84922164269528%2C35.35824511411897&z=12
+Токмак;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=47.204382960435645%2C35.598849991590896&z=15
+Лисичанск;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.89957953802067%2C38.42554116145129&z=12
+пгт Новоайдар;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.96163497286965%2C39.006057022962295&z=13
+пгт Новопсков;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=49.524713845104884%2C39.10061804711586&z=14
+с. Передельское;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.75778016005375%2C39.14479939400917&z=15
+Северодонецк;https://www.google.com/maps/d/edit?mid=1K9psupMhLjglITAeu6AaKrDnXdvihm8F&ll=48.94655902641852%2C38.49688159954496&z=13
+с.Богуслав;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.496594860611054%2C35.96143233891382&z=14
+Павлоград;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.51165221602264%2C35.88563581979747&z=13
+Бахмут (Артемівськ);https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.60633369051187%2C37.997121692856695&z=12
+Волноваха;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.59359662930993%2C37.50136456861844&z=12
+Гірник;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.058714502118455%2C37.36319970609895&z=13
+смт Зарічне (смт Кіровськ);https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.97517850747107%2C37.700986380598465&z=12
+Костянтинівка;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.512235879118734%2C37.67250971376234&z=12
+Краматорськ;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.74271978747919%2C37.59645947310264&z=12
+с. Красна Поляна;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.55726991945438%2C37.06460961195762&z=13
+Покровськ (Красноармійськ);https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.272677940784%2C37.15054804577608&z=12
+Лиман (Червоний Лиман);https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.985225842839235%2C37.81243139996309&z=13
+Курахівка;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.98866718433537%2C37.265589416930766&z=13
+Маріуполь;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.119536027689115%2C37.56287956512415&z=12
+смт. Новотроїцьке;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.71231216039229%2C37.57150554931604&z=13
+сел. Ольгінка;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.69619700529072%2C37.49666118896437&z=13
+с. Райгородок;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.900198316508174%2C37.72411251342737&z=14
+Святогір'я;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=49.04291282140247%2C37.57558253217735&z=14
+Селідове;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.17226356907672%2C37.30937481842011&z=14
+Сергіївка;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.6851067333172%2C37.40588992919879&z=15
+Слов'янськ;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.85694398933697%2C37.5882650464614&z=12
+с. Старомлинівка;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.69849154883926%2C36.832096680982886&z=14
+смт. Черкаське;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.83415560876634%2C37.37918913398585&z=14
+Василівка;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.433280403796374%2C35.302495149000606&z=15
+Запоріжжя;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.81316205736648%2C35.07702301841573&z=11
+Мелітополь;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=46.84922164269528%2C35.35824511411897&z=12
+Токмак;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=47.204382960435645%2C35.598849991590896&z=15
+Лисичанськ;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.89957953802067%2C38.42554116145129&z=12
+смт Новоайдар;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.96163497286965%2C39.006057022962295&z=13
+смт Новопсков;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=49.524713845104884%2C39.10061804711586&z=14
+с. Передільське;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.75778016005375%2C39.14479939400917&z=15
+Сєвєродонецьк;https://www.google.com/maps/d/edit?mid=1Q_iiSqKnxBrTP0Abw7WfGM_04cBmMhfU&ll=48.94655902641852%2C38.49688159954496&z=13

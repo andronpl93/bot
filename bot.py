@@ -19,10 +19,11 @@ import pickle
 from config import NotComands
 import fdb
 
-
+fpath='C:/BOTTelegram/'
+#fpath='D:/Phyton/bot/'
+con = pyodbc.connect('DSN=db;')
+cur=con.cursor()
 try:
-        con = fdb.connect(dsn='DB.FDB', user='SYSDBA', password='masterkey')
-        cur=con.cursor()
         bot = telebot.TeleBot(config.token)
         language=config.fLang(cur,con)
 except Exception:
@@ -37,19 +38,22 @@ non_bmp_map = dict.fromkeys(range(0x10000, sys.maxunicode + 1), 0xfffd)
 @bot.message_handler(commands=["start",config.text['home']['ua'][1:],config.text['home']['ru'][1:]])
 @fatallError
 def start(message):
+    print(1)
     if message.text=='/start':
             global con, cur
             spaming.check(message.from_user.id,message.from_user.first_name,message.from_user.last_name,cur,con)
             selectLang.f=1
             selectLang(message)
             return 0
+    print(2)
     try:
             if selectLang.f:
                     help(message)
                     return 0
     except AttributeError:
             pass
-    f=open('files/stikers/logo.webp','rb')
+    print(3)
+    f=open(fpath+'files/stikers/logo.webp','rb')
     bot.send_sticker(message.chat.id,f)
     f.close()
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -58,6 +62,8 @@ def start(message):
     bot.send_message(message.chat.id,'{1}, {0} '.format(message.chat.first_name,config.text['hello'][language[str(message.from_user.id)]])+u'\U0001F44B\n'+config.text['selInfo'][language[str(message.from_user.id)]],reply_markup=keyboard)
     botan.track(config.botan_key, message.chat.id, message, 'Старт')
 
+######################################################
+bot.start = start
 ###########################
 @bot.message_handler(func=lambda m:m.text[:-1]==config.text['textLangSel']['ru'][:-1] or m.text[:-1]==config.text['textLangSel']['ua'][:-1])
 @LangError
@@ -88,10 +94,10 @@ def selectLang2(message):
                 language[str(message.from_user.id)]='ua'
         else:
                         language[str(message.from_user.id)]='ru'
-        if nou is not None:
+        if nou is not None and nou:
                 cur.execute("insert into lang (id_user,l) values ('{0}','{1}')".format(message.from_user.id,language[str(message.from_user.id)]))
         else:
-              cur.executecute("update lang id_user='{0}',l='{1}' where id_user='{0}'".format(message.from_user.id,language[str(message.from_user.id)]))  
+              cur.execute("update lang  set id_user='{0}',l='{1}' where id_user='{0}'".format(message.from_user.id,language[str(message.from_user.id)]))  
         con.commit()
         botan.track(config.botan_key, message.chat.id, message, "Язык - {0}".format(language[str(message.from_user.id)]))
         bot.send_message(message.chat.id,config.text['textLengEdit'][language[str(message.from_user.id)]])
@@ -103,7 +109,7 @@ def help(message):
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add("Ну ок")
         bot.send_message(message.chat.id,config.text['textHelp'][language[str(message.from_user.id)]][0],parse_mode='HTML')
-        f=open('files/stikers/help.webp','rb')
+        f=open(fpath+'files/stikers/help.webp','rb')
         bot.send_sticker(message.chat.id,f)
         f.close()
         mess=bot.send_message(message.chat.id,config.text['textHelp'][language[str(message.from_user.id)]][1],reply_markup=keyboard,parse_mode='HTML')
@@ -115,7 +121,7 @@ def help(message):
 @fatallError
 def price(message):
         global dataPrice
-        with open('files/data.dat', 'rb') as f:
+        with open(fpath+'files/data.dat', 'rb') as f:
                 unpickler = pickle.Unpickler(f)
                 dataPrice = unpickler.load()
         obl=list(dataPrice[language[str(message.from_user.id)]])
@@ -214,7 +220,7 @@ def fCity(message):
                 if len(dataPrice[language[str(message.from_user.id)]][fObl.obl][nameCity])==1:
                         
                         try:
-                                f=open('price/{0}.webp'.format(a1),'rb')
+                                f=open(fpath+'price/{0}.webp'.format(a1),'rb')
                                 pr['t']=bot.send_sticker(message.chat.id,f,reply_markup=keyboard)
                                 f.close()
                         except:
@@ -257,10 +263,10 @@ def pages(c):
                 pass
         try:
                 try:
-                        f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
+                        f=open(fpath+'price/{0}{1}{2}{3}{4}{5}.webp'.format
                                (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ru'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
                 except KeyError:
-                        f=open('price/{0}{1}{2}{3}{4}{5}.webp'.format
+                        f=open(fpath+'price/{0}{1}{2}{3}{4}{5}.webp'.format
                                (*[str(j).replace('.','').replace(' ','-') for j in dataPrice['ua'][fObl.obl][pr['nameCity']][int(c.data)-1][1:]]),'rb')
 
                 pr['t'] = bot.send_sticker(pr['t'].chat.id,f,reply_markup=pr['k'])
@@ -276,9 +282,9 @@ def pages(c):
 def balanceStiker(message,log,bal,k):
         sB=85
         H=230
-        fnt24 = ImageFont.truetype('files/stikers/tnr.ttf', sB)
-        fnt14 = ImageFont.truetype('files/stikers/tnr.ttf', 50)
-        f=Image.open('files/stikers/balance{0}{1}.png'.format(log[0]=='0' and 'KB' or 'MB',language[str(message.from_user.id)]))
+        fnt24 = ImageFont.truetype(fpath+'files/stikers/tnr.ttf', sB)
+        fnt14 = ImageFont.truetype(fpath+'files/stikers/tnr.ttf', 50)
+        f=Image.open(fpath+'files/stikers/balance{0}{1}.png'.format(log[0]=='0' and 'KB' or 'MB',language[str(message.from_user.id)]))
         d = ImageDraw.Draw(f)
         w, h = d.textsize(str(bal))
 
@@ -290,11 +296,11 @@ def balanceStiker(message,log,bal,k):
         else:
               x=log[:4]+' '+log[4:8]
               d.text((264,265), x, font=fnt14, fill=(255,255,255,255))
-        f.save('files/stikers/{0}.webp'.format(message.from_user.id),'WEBP')
-        f=open('files/stikers/{0}.webp'.format(message.from_user.id),'rb')
+        f.save(fpath+'files/stikers/{0}.webp'.format(message.from_user.id),'WEBP')
+        f=open(fpath+'files/stikers/{0}.webp'.format(message.from_user.id),'rb')
         mess=bot.send_sticker(message.chat.id,f,reply_markup=k)
         f.close()
-        os.remove('files/stikers/{0}.webp'.format(message.from_user.id))
+        os.remove(fpath+'files/stikers/{0}.webp'.format(message.from_user.id))
         return mess
         
 
@@ -314,7 +320,7 @@ def balance(message):
                         messDel=bot.send_message(message.chat.id,config.text['textWait'][language[str(message.from_user.id)]])
                         a=login.req(card[0][1],card[0][2],language[str(message.from_user.id)])
                         if a[1][1]=='KB' or a[1][1]=='MB' :
-                                f=open('files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
+                                f=open(fpath+'files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
                                 bot.send_sticker(message.chat.id,f)
                                 f.close()
                                 bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
@@ -360,7 +366,7 @@ def nomCard(message):
                                 
                                 if a[0]:
                                         if  a[1][1]=='KB' or a[1][1]=='MB' :
-                                                f=open('files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
+                                                f=open(fpath+'files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
                                                 bot.send_sticker(message.chat.id,f)
                                                 f.close()
                                                 bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
@@ -411,7 +417,7 @@ def choiceCard(message):
                 a=login.req(card[0][1],card[0][2],language[str(message.from_user.id)])
                 
                 if a[1][1]=='KB' or a[1][1]=='MB' :
-                        f=open('files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
+                        f=open(fpath+'files/stikers/ban{0}.webp'.format(a[1][1]),'rb')
                         bot.send_sticker(message.chat.id,f)
                         f.close()
                         bot.send_message(message.chat.id,config.text['textBan'][language[str(message.from_user.id)]].format(a[1][0]),parse_mode='HTML')
@@ -442,7 +448,7 @@ dataSpam=0
 k2= types.ReplyKeyboardMarkup(resize_keyboard=True)
 @bot.message_handler(commands=["spaming"])
 def spam(message):
-        if spaming.isOdmen(message.chat.id,'files/people/odmeni.txt'):
+        if spaming.isOdmen(message.chat.id,fpath+'files/people/odmeni.txt'):
                 global isOdmenSpam,dataSpam,k2
                 isOdmenSpam=1
                 k2= types.ReplyKeyboardMarkup(resize_keyboard=True)
@@ -466,12 +472,11 @@ def spamFile2(message):
         dataSpam['people']={}
         dataSpam['komu']=message.text
         dataSpam['peopleLang']={}
-        with open('files/lang.txt','r') as f:
-                for i in f:
-                        i=i.split(';')
-                        dataSpam['peopleLang'][i[0]]=i[1][:-1]
+        cur.execute("select * from lang;")
+        rows=cur.fetchall()
+        for i in rows:
+                dataSpam['peopleLang'][i[1]]=i[2]
         if  message.text=="Все пользователи телеграм":
-                
                 for i in dataSpam['peopleLang']:
                         dataSpam['people'][i]=dataSpam['peopleLang'][i]
         else:
@@ -480,14 +485,14 @@ def spamFile2(message):
                                 a=0
                         else:
                                 a=9
-                        with open('files/AllCard.txt','r') as f:
-                                for i in f:
-                                        i=i.split(';')
-                                        if i[1][0]==str(a):
-                                                dataSpam['people'][i[0]]='ua'
+                        cur.execute("select * from allcard;")
+                        rows=cur.fetchall()
+                        for i in rows:
+                                if i[1][0]==str(a):
+                                        dataSpam['people'][i[1]]='ua'
                 else:
                         try:
-                                with open(message.text,'r') as f:
+                                with open(fpath+message.text,'r') as f:
                                         for i in f:
                                                 i=i.split(';')
                                                 if i[0][-1]=='\n':
@@ -551,7 +556,7 @@ def excample2(message):
         else:
                 if message.text=='[Отправить тестовой группе]':
                         dataTest={}
-                        with open('files/people/test.txt','r') as f:
+                        with open(fpath+'files/people/test.txt','r') as f:
                                 for i in f:
                                         dataTest[i[:-1]]='ua'
                         for i in dataTest:
@@ -602,8 +607,8 @@ def push(id,text,test):
                                                 f=Image.open(murl)
                                                 d = ImageDraw.Draw(f)
                                                 murl=murl.replace('.','')
-                                                f.save('files/{0}.webp'.format(murl),'WEBP')
-                                                f=open('files/{0}.webp'.format(murl),'rb')
+                                                f.save(fpath+'files/{0}.webp'.format(murl),'WEBP')
+                                                f=open(fpath+'files/{0}.webp'.format(murl),'rb')
                                                 mess=bot.send_sticker(id,f)
                                                 f.close()
                                                 os.remove('files/{0}.webp'.format(murl))
@@ -625,7 +630,7 @@ def push(id,text,test):
 @fatallError
 def actions(message):      
         rez={}
-        with open('files/actions.txt','r',encoding='utf-8') as f:
+        with open(fpath+'files/actions.txt','r',encoding='utf-8') as f:
                 for i in f:
                         i=i.split(';')
                         if language[str(message.from_user.id)]=='ru':
@@ -697,7 +702,7 @@ def action(message):
 @fatallError
 @Buttons(bot,language)
 def addAction(message):
-        if spaming.isOdmen(message.chat.id,'files/people/odmeniAction.txt'):
+        if spaming.isOdmen(message.chat.id,fpath+'files/people/odmeniAction.txt'):
                 mess=bot.send_message(message.chat.id,"Введите <b>русское</b> название акции. Название будет отображаться на кнопке, желаемая длина должна быть не более 20-ти символов. Очень рекомендуем использовать эмоджи, стикеры использовать нельзя",parse_mode='HTML',reply_markup=types.ReplyKeyboardRemove())
                 bot.register_next_step_handler(mess,addAction22)
 @fatallError
@@ -727,7 +732,7 @@ def addAction3(message):
 @fatallError
 @Buttons(bot,language)
 def addAction5(message):
-        with open('files/actions.txt','a',encoding='utf-8') as f:
+        with open(fpath+'files/actions.txt','a',encoding='utf-8') as f:
                 f.write("{0};{1};{2};{3};{4}\n".format(addAction22.ruName,addAction2.uaName,addAction33.ruDescription.replace('\n','\\n').replace(';',' '),addAction3.uaDescription.replace('\n','\\n').replace(';',' '),message.text))
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)     
         keyboard.add(config.text['home'][language[str(message.from_user.id)]])
@@ -738,9 +743,9 @@ def addAction5(message):
 @fatallError
 @Buttons(bot,language)
 def deleteAction(message):
-        if spaming.isOdmen(message.chat.id,'files/people/odmeniAction.txt'):
+        if spaming.isOdmen(message.chat.id,fpath+'files/people/odmeniAction.txt'):
                 rez={}
-                with open('files/actions.txt','r',encoding='utf-8') as f:
+                with open(fpath+'files/actions.txt','r',encoding='utf-8') as f:
                         for i in f:
                                 i=i.split(';')
                                 rez[i[0]]=(i[1],str(i[2]).replace('\\n','\n'),str(i[3]).replace('\\n','\n'),i[4])
@@ -776,7 +781,7 @@ def deleteAction2(message):
 @fatallError
 @Buttons(bot,language)
 def deleteAction3(message):
-        with open('files/actions.txt','w',encoding='utf-8') as f:
+        with open(fpath+'files/actions.txt','w',encoding='utf-8') as f:
                 for i in deleteAction2.rez.keys():
                         if  i!=deleteAction3.mess:
                             f.write("{0};{1};{2};{3};{4}".format(i,deleteAction2.rez[i][0],deleteAction2.rez[i][1],deleteAction2.rez[i][2],deleteAction2.rez[i][3]))
@@ -821,7 +826,7 @@ def gogo():
     try:
         bot.polling(none_stop=True)
     except:
-        f = open('fattalErrors.txt' , 'a')
+        f = open(fpath+'fattalErrors.txt' , 'a')
         f.write("{0}~ {1} \n\n".format(datetime.datetime.now(),traceback.format_exc()))
         f.close()
         time.sleep(5)
